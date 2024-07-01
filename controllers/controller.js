@@ -9,6 +9,9 @@ exports.sayHello = async (req, res) => {
   }
 
   const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  if (clientIp.includes(',')) {
+    clientIp = clientIp.split(',')[0];
+  }
   res.json(clientIp)
 
 //   try {
