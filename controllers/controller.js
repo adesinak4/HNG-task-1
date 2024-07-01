@@ -18,7 +18,8 @@ exports.sayHello = async (req, res) => {
     const locationResponse = await axios.get(`https://ipinfo.io/${clientIp}?token=${process.env.IP_TOKEN}`);
     const location = locationResponse.data.city;
 
-    // const weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=YOUR_OPENWEATHERMAP_API_KEY`);
+    const weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.KEY}`);
+    res.json(weatherResponse.data)
     // const temperature = weatherResponse.data.main.temp;
 
     // Prepare response
@@ -28,7 +29,7 @@ exports.sayHello = async (req, res) => {
       // greeting: `Hello, ${visitorName}! The temperature is ${temperature} degrees Celsius in ${location}.`
     };
 
-    res.json(response);
+    // res.json(response);
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred while processing your request.');
