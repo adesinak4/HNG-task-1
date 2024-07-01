@@ -19,14 +19,13 @@ exports.sayHello = async (req, res) => {
     const location = locationResponse.data.city;
 
     const weatherResponse = await axios.get(`https://api.weatherbit.io/v2.0/current?city=${location}&key=${process.env.KEY}`);
-    res.json(weatherResponse.data)
-    // const temperature = weatherResponse.data.main.temp;
+    const temperature = weatherResponse.data.data[0].temp;
 
     // Prepare response
     const response = {
       client_ip: clientIp,
       location: location,
-      // greeting: `Hello, ${visitorName}! The temperature is ${temperature} degrees Celsius in ${location}.`
+      greeting: `Hello, ${visitorName}! The temperature is ${temperature} degrees Celsius in ${location}.`
     };
 
     // res.json(response);
