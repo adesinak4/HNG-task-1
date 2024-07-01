@@ -12,6 +12,7 @@ exports.sayHello = async (req, res) => {
   if (clientIp.includes(',')) {
     clientIp = clientIp.split(',')[0];
   }
+  clientIp = clientIp.split(':')[0];
   console.log(clientIp)
 
   try {
