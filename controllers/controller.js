@@ -18,7 +18,7 @@ exports.sayHello = async (req, res) => {
     const locationResponse = await axios.get(`https://ipinfo.io/${clientIp}?token=${process.env.IP_TOKEN}`);
     const location = locationResponse.data.city;
 
-    const weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${process.env.KEY}`);
+    const weatherResponse = await axios.get(`https://api.weatherbit.io/v2.0/current?city=${location}&key=${process.env.KEY}`);
     res.json(weatherResponse.data)
     // const temperature = weatherResponse.data.main.temp;
 
