@@ -28,7 +28,7 @@ exports.sayHello = async (req, res) => {
       greeting: `Hello, ${visitorName}! The temperature is ${temperature} degrees Celsius in ${location}.`
     };
 
-    // res.json(response);
+    res.json(response);
   } catch (error) {
     console.error(error);
     res.status(500).send('An error occurred while processing your request.');
